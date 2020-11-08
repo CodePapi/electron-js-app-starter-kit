@@ -2,7 +2,7 @@ const electron = require("electron")
 const path = require("path")
 const url=require("url")
 
-const{app, BrowserWindow, Menu}=electron
+const{app, BrowserWindow, Menu, ipcMain}=electron
 
 let mainWindow
 
@@ -46,8 +46,17 @@ const createAddeWindow=()=>{
         protocol:"file",
         slashes:true
     }))
+    //garbage collection handle
+    addWindow.on("close", function(){
+        addWindow=null
+    })
 }
-
+//catch idems
+ipcMain.on("item:add", function(e,item){
+    console.log(item)
+    mainWindow.webContents.send("item:add", item)
+    addWindow.close()
+})
 
 //create menu template
 const mainMenuTemplate = [{
@@ -73,3 +82,26 @@ const mainMenuTemplate = [{
 {
     label:'Edit'
 }]
+// if mac, add empty object area
+if(process.platform==="darwin"){
+    mainMenuTemplate.unshift({})
+}
+
+//dev tools if development mode
+if(process.env.NODE_ENV !== "production"){
+    mainMenuTemplate.push({
+        accelerator:process.platform==="darwin"?"Command+I":"Ctrl+I",
+        label:"Developer Tools",
+        submenu:[
+            {
+                label:"Toggle DevTools",
+                click(item, focusedWindow){
+                    focusedWindow.toggleDevTools()
+                }
+            },
+            {
+                role:"reload"
+            }
+        ]
+    })
+}
