@@ -10,7 +10,7 @@ Examples of applications built with electron includes [Visual Studio Codes Edito
 
 In the project directory, you start by navigatiing two steps nests ahead:
 
-### `cd electron-js-starter-kits/electron-app-with-pure-js/` 
+### `cd electron-js-starter-kits/` 
 
 ## Available Scripts 
 In the project directory, you can run:
