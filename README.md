@@ -27,20 +27,20 @@ Run this command to open the application in developement mode
 
 Builds the app for production to the `release-build` folder as a windows desktop application.<br />
 
-Your app is publised as a window application, inside the `release-build` directored.
+Your app is publised as a window application, inside the `release-build` directory.
 
 ### `npm  package-mac` or `yarn package-mac`
 
 Builds the app for production to the `release-build` folder as a macOS desktop application.<br />
 
-Your app is publised as a macOS application, inside the `release-build` directored.
+Your app is publised as a macOS application, inside the `release-build` directory.
 
 
 ### `npm  package-linux` or `yarn package-linux`
 
 Builds the app for production to the `release-build` folder as a Linux desktop application.<br />
 
-Your app is publised as a Linux application, inside the `release-build` directored.
+Your app is publised as a Linux application, inside the `release-build` directory.
 
 
 
